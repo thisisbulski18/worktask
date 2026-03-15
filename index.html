@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Kerja Otomatis | Live Sync</title>
+    <title>Sistem Kerja Otomatis | Transparan</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     
@@ -21,7 +21,7 @@
             overflow: hidden;
         }
 
-        /* Latar belakang globe */
+        /* Latar belakang gambar gelap */
         .bg-container {
             position: absolute;
             top: 0;
@@ -30,31 +30,24 @@
             height: 100%;
             background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') no-repeat center center;
             background-size: cover;
-            filter: brightness(0.25) contrast(1.2);
-            z-index: -1;
-        }
-
-        .glow-overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(0, 50, 100, 0.3) 0%, transparent 70%);
+            filter: brightness(0.2); /* Sangat gelap agar transparan terlihat */
             z-index: -1;
         }
 
         .main-wrapper {
             text-align: center;
-            padding: 20px;
             width: 100%;
             max-width: 800px;
+            padding: 20px;
         }
 
+        /* Logo GUCCI */
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(50px, 10vw, 110px); /* Ukuran dinamis */
+            font-size: clamp(60px, 12vw, 120px);
             font-weight: 700;
-            letter-spacing: 15px;
-            margin-bottom: 30px;
+            letter-spacing: 10px;
+            margin-bottom: 40px;
             text-transform: uppercase;
         }
 
@@ -62,61 +55,66 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
+        /* BAGIAN TRANSPARAN (GLASSMORPHISM) */
         .time-box {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 20px 45px;
-            border-radius: 12px;
-            min-width: 160px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Latar belakang transparan putih tipis */
+            background: rgba(255, 255, 255, 0.05); 
+            /* Efek blur di belakang kotak */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            
+            padding: 30px 40px;
+            border-radius: 15px;
+            min-width: 180px;
+            /* Border tipis agar bentuk kotak terlihat di kegelapan */
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
         .label {
             display: block;
             font-weight: 900;
-            font-size: 20px;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 18px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-transform: uppercase;
         }
 
         .time-value {
             font-family: 'Playfair Display', serif;
-            font-size: 42px;
+            font-size: 45px;
             font-weight: 700;
             display: block;
             color: #fff;
         }
 
+        /* Teks Deskripsi Profit */
         .footer-text {
             font-size: 14px;
             font-weight: 700;
-            line-height: 1.6;
+            line-height: 1.8;
             letter-spacing: 1px;
             text-transform: uppercase;
             max-width: 600px;
             margin: 0 auto;
-            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Responsif untuk layar kecil/HP */
         @media (max-width: 600px) {
-            .time-box-container { gap: 10px; }
-            .time-box { padding: 15px 25px; min-width: 130px; }
-            .time-value { font-size: 32px; }
-            .label { font-size: 16px; }
-            .footer-text { font-size: 11px; }
+            .time-box-container { flex-direction: column; align-items: center; gap: 15px; }
+            .time-box { width: 85%; padding: 20px; }
+            .logo { font-size: 60px; }
+            .footer-text { font-size: 12px; }
         }
     </style>
 </head>
 <body>
 
     <div class="bg-container"></div>
-    <div class="glow-overlay"></div>
 
     <div class="main-wrapper">
         <h1 class="logo">GUCCI</h1>
@@ -134,7 +132,7 @@
 
         <p class="footer-text">
             SISTEM SEDANG MEMPROSES PROFIT DI DALAM AKUN ANDA<br>
-            MOHON MENUNGGU HINGGA WAKTU YANG <br>
+            MOHON MENUNGGU HINGGA WAKTU YANG<br>
             DITENTUKAN SISTEM BERAKHIR
         </p>
     </div>
@@ -142,26 +140,18 @@
     <script>
         function updateClock() {
             const now = new Date();
-
-            // Fungsi untuk menambah angka 0 di depan jika di bawah 10
             const pad = (num) => num.toString().padStart(2, '0');
 
-            // 1. Waktu MULAI (Jam Dunia Sekarang)
-            const hours = pad(now.getHours());
-            const minutes = pad(now.getMinutes());
-            document.getElementById('startTime').innerText = `${hours}:${minutes}`;
+            // Set waktu MULAI sesuai jam sekarang (Sync Dunia)
+            document.getElementById('startTime').innerText = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
 
-            // 2. Waktu SELESAI (Misalnya 5 menit setelah MULAI)
-            const futureDate = new Date(now.getTime() + 5 * 60000); // Tambah 5 menit
-            const endHours = pad(futureDate.getHours());
-            const endMinutes = pad(futureDate.getMinutes());
-            document.getElementById('endTime').innerText = `${endHours}:${endMinutes}`;
+            // Set waktu SELESAI (5 menit setelah mulai seperti gambar)
+            const future = new Date(now.getTime() + 5 * 60000);
+            document.getElementById('endTime').innerText = `${pad(future.getHours())}:${pad(future.getMinutes())}`;
         }
 
-        // Jalankan setiap 1 detik agar waktu selalu sinkron
+        // Update tiap detik agar sinkron terus
         setInterval(updateClock, 1000);
-
-        // Jalankan langsung saat halaman dibuka
         updateClock();
     </script>
 </body>
