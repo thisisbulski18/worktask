@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Kerja Otomatis | Transparan</title>
-    <!-- Google Fonts -->
+    <title>Sistem Kerja Otomatis | Gucci Official</title>
+    <!-- Google Fonts untuk angka jam -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
@@ -21,7 +21,7 @@
             overflow: hidden;
         }
 
-        /* Latar belakang gambar gelap */
+        /* Latar belakang */
         .bg-container {
             position: absolute;
             top: 0;
@@ -30,7 +30,7 @@
             height: 100%;
             background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') no-repeat center center;
             background-size: cover;
-            filter: brightness(0.2); /* Sangat gelap agar transparan terlihat */
+            filter: brightness(0.2);
             z-index: -1;
         }
 
@@ -41,14 +41,14 @@
             padding: 20px;
         }
 
-        /* Logo GUCCI */
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(60px, 12vw, 120px);
-            font-weight: 700;
-            letter-spacing: 10px;
+        /* LOGO GUCCI ASLI */
+        .logo-img {
+            width: 100%;
+            max-width: 450px; /* Ukuran logo */
+            height: auto;
             margin-bottom: 40px;
-            text-transform: uppercase;
+            /* Memberikan efek sedikit putih mengkilap */
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)) invert(1);
         }
 
         .time-box-container {
@@ -58,20 +58,15 @@
             margin-bottom: 50px;
         }
 
-        /* BAGIAN TRANSPARAN (GLASSMORPHISM) */
+        /* BAGIAN TRANSPARAN */
         .time-box {
-            /* Latar belakang transparan putih tipis */
-            background: rgba(255, 255, 255, 0.05); 
-            /* Efek blur di belakang kotak */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            
-            padding: 30px 40px;
-            border-radius: 15px;
-            min-width: 180px;
-            /* Border tipis agar bentuk kotak terlihat di kegelapan */
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            background: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 25px 40px;
+            border-radius: 12px;
+            min-width: 170px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .label {
@@ -79,25 +74,22 @@
             font-weight: 900;
             font-size: 18px;
             letter-spacing: 3px;
-            margin-bottom: 15px;
-            color: #ffffff;
-            text-transform: uppercase;
+            margin-bottom: 12px;
+            color: #fff;
         }
 
         .time-value {
             font-family: 'Playfair Display', serif;
-            font-size: 45px;
+            font-size: 42px;
             font-weight: 700;
             display: block;
-            color: #fff;
         }
 
-        /* Teks Deskripsi Profit */
         .footer-text {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             line-height: 1.8;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             max-width: 600px;
             margin: 0 auto;
@@ -105,10 +97,9 @@
         }
 
         @media (max-width: 600px) {
+            .logo-img { max-width: 250px; }
             .time-box-container { flex-direction: column; align-items: center; gap: 15px; }
-            .time-box { width: 85%; padding: 20px; }
-            .logo { font-size: 60px; }
-            .footer-text { font-size: 12px; }
+            .time-box { width: 80%; padding: 20px; }
         }
     </style>
 </head>
@@ -117,7 +108,9 @@
     <div class="bg-container"></div>
 
     <div class="main-wrapper">
-        <h1 class="logo">GUCCI</h1>
+        <!-- Menggunakan Logo PNG/SVG Gucci Asli -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Gucci-Logo.svg/1280px-Gucci-Logo.svg.png" 
+             alt="Gucci Logo" class="logo-img">
 
         <div class="time-box-container">
             <div class="time-box">
@@ -142,15 +135,14 @@
             const now = new Date();
             const pad = (num) => num.toString().padStart(2, '0');
 
-            // Set waktu MULAI sesuai jam sekarang (Sync Dunia)
+            // Waktu Mulai (Sekarang)
             document.getElementById('startTime').innerText = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
 
-            // Set waktu SELESAI (5 menit setelah mulai seperti gambar)
+            // Waktu Selesai (+5 Menit)
             const future = new Date(now.getTime() + 5 * 60000);
             document.getElementById('endTime').innerText = `${pad(future.getHours())}:${pad(future.getMinutes())}`;
         }
 
-        // Update tiap detik agar sinkron terus
         setInterval(updateClock, 1000);
         updateClock();
     </script>
