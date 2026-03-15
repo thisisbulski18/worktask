@@ -3,168 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Kerja Otomatis | Digital Edition</title>
-    <!-- Google Fonts untuk tipografi elegan -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Sistem Kerja Otomatis | Gucci Burgundy Edition</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;600;900&display=swap" rel="stylesheet">
     
     <style>
+        :root {
+            /* Warna Burgundy Sesuai Gambar Sebelumnya */
+            --burgundy-dark: #2d050a;
+            --burgundy-main: #4d0711;
+            --white-pure: #ffffff;
+        }
+
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #000814; /* Biru gelap pekat */
+            margin: 0; padding: 0; height: 100%;
+            display: flex; justify-content: center; align-items: center;
+            /* Latar belakang merah burgundy mewah */
+            background: radial-gradient(circle at center, var(--burgundy-main) 0%, var(--burgundy-dark) 100%);
             font-family: 'Inter', sans-serif;
-            color: white;
+            color: var(--white-pure);
             overflow: hidden;
         }
 
-        /* Latar Belakang Digital Globe Biru */
-        .bg-overlay {
+        /* Tekstur halus agar background terlihat mahal */
+        body::before {
+            content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Menggunakan gambar globe digital bertema tech */
-            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
-            background-size: cover;
-            filter: brightness(0.2) contrast(1.5) saturate(1.5);
-            z-index: -2;
-        }
-
-        /* Efek Gradasi Biru Tengah (Radial Glow) */
-        .glow-overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(0, 50, 150, 0.4) 0%, transparent 70%);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+            opacity: 0.1;
             z-index: -1;
         }
 
         .main-wrapper {
             text-align: center;
-            padding: 20px;
             width: 100%;
             max-width: 900px;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-out;
         }
 
-        /* Gaya Logo GUCCI Sesuai Gambar */
+        /* TULISAN GUCCI (Gaya Digital Globe: Putih, Lebar, Serif) */
         .logo-text {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(50px, 12vw, 120px);
+            font-size: clamp(55px, 12vw, 115px);
             font-weight: 600;
-            letter-spacing: 20px; /* Jarak lebar khas Gucci */
-            margin-bottom: 30px;
+            letter-spacing: 25px; /* Jarak huruf lebar agar sangat elegan */
+            margin-bottom: 50px;
             text-transform: uppercase;
             color: #ffffff;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-            margin-left: 20px; /* Kompensasi spasi huruf terakhir */
+            /* Memberikan sedikit efek cahaya agar tulisan "hidup" */
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px rgba(255,255,255,0.1);
+            margin-left: 25px; /* Menyeimbangkan spasi huruf terakhir agar tetap di tengah */
         }
 
-        /* Container Kotak Waktu */
         .time-box-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
+            gap: 25px;
+            margin-bottom: 60px;
         }
 
-        /* Kotak Transparan (Menyatu dengan Globe) */
+        /* Kotak Transparan Halus */
         .time-box {
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            padding: 15px 40px;
-            border-radius: 6px;
-            min-width: 140px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 30px 50px;
+            border-radius: 4px;
+            min-width: 180px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .label {
             display: block;
             font-weight: 900;
-            font-size: 18px;
-            letter-spacing: 1.5px;
-            margin-bottom: 8px;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
         }
 
         .time-value {
             font-family: 'Playfair Display', serif;
-            font-size: 38px;
-            font-weight: 600;
+            font-size: 48px;
+            font-weight: 700;
             display: block;
+            letter-spacing: 1px;
         }
 
-        /* Teks Deskripsi di Bawah */
+        /* Teks Deskripsi */
         .footer-text {
-            font-size: 14px;
-            font-weight: 800;
-            line-height: 1.5;
-            letter-spacing: 0.5px;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 2;
+            letter-spacing: 2px;
             text-transform: uppercase;
             max-width: 600px;
             margin: 0 auto;
-            opacity: 0.9;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 30px auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Responsif HP */
         @media (max-width: 600px) {
-            .logo-text { font-size: 45px; letter-spacing: 10px; }
-            .time-box { padding: 10px 20px; min-width: 110px; }
-            .label { font-size: 16px; }
-            .time-value { font-size: 28px; }
-            .footer-text { font-size: 11px; padding: 0 15px; }
+            .logo-text { font-size: 45px; letter-spacing: 12px; margin-left: 12px; }
+            .time-box-container { flex-direction: column; align-items: center; gap: 20px; }
+            .time-box { width: 85%; padding: 25px; }
+            .time-value { font-size: 40px; }
+            .footer-text { font-size: 11px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-overlay"></div>
-    <div class="glow-overlay"></div>
-
     <div class="main-wrapper">
-        <!-- Logo GUCCI Sesuai Gambar -->
+        <!-- Tulisan GUCCI Serif Putih Lebar -->
         <h1 class="logo-text">GUCCI</h1>
 
-        <!-- Kotak Waktu -->
         <div class="time-box-container">
             <div class="time-box">
-                <span class="label">MULAI</span>
-                <span class="time-value" id="startTime">11:26</span>
+                <span class="label">Mulai</span>
+                <span class="time-value" id="startTime">--:--</span>
             </div>
             <div class="time-box">
-                <span class="label">SELESAI</span>
-                <span class="time-value" id="endTime">11:31</span>
+                <span class="label">Selesai</span>
+                <span class="time-value" id="endTime">--:--</span>
             </div>
         </div>
 
-        <!-- Deskripsi -->
+        <div class="divider"></div>
+
         <p class="footer-text">
-            SISTEM SEDANG MEMPROSES PROFIT DI DALAM AKUN ANDA<br>
-            MOHON MENUNGGU HINGGA WAKTU YANG<br>
-            DITENTUKAN SISTEM BERAKHIR
+            Sistem sedang memproses profit di dalam akun anda<br>
+            mohon menunggu hingga waktu yang<br>
+            ditentukan sistem berakhir
         </p>
     </div>
 
     <script>
-        // Logika Sinkron Jam Dunia
         function updateClock() {
             const now = new Date();
             const pad = (num) => num.toString().padStart(2, '0');
-
-            // Mulai = Waktu sekarang
+            
+            // Jam Dunia Real-time
             document.getElementById('startTime').innerText = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
-
-            // Selesai = 5 menit kemudian
+            
+            // Waktu Selesai (Otomatis +5 Menit)
             const future = new Date(now.getTime() + 5 * 60000);
             document.getElementById('endTime').innerText = `${pad(future.getHours())}:${pad(future.getMinutes())}`;
         }
-
+        
         setInterval(updateClock, 1000);
         updateClock();
     </script>
