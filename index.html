@@ -3,83 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Kerja Otomatis | Gucci Burgundy Edition</title>
+    <title>Sistem Kerja Otomatis | Gucci Luxury Edition</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Warna Burgundy Sesuai Gambar Sebelumnya */
             --burgundy-dark: #2d050a;
             --burgundy-main: #4d0711;
-            --white-pure: #ffffff;
+            --white-luxury: #ffffff;
         }
 
         body, html {
-            margin: 0; padding: 0; height: 100%;
-            display: flex; justify-content: center; align-items: center;
-            /* Latar belakang merah burgundy mewah */
+            margin: 0; padding: 0; min-height: 100vh;
+            display: flex; flex-direction: column;
             background: radial-gradient(circle at center, var(--burgundy-main) 0%, var(--burgundy-dark) 100%);
             font-family: 'Inter', sans-serif;
-            color: var(--white-pure);
-            overflow: hidden;
+            color: var(--white-luxury);
         }
 
-        /* Tekstur halus agar background terlihat mahal */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
-            opacity: 0.1;
-            z-index: -1;
+        /* Container utama agar konten di tengah */
+        .content-area {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
         }
 
         .main-wrapper {
             text-align: center;
             width: 100%;
-            max-width: 900px;
-            padding: 20px;
-            animation: fadeIn 1.5s ease-out;
+            max-width: 800px;
         }
 
-        /* TULISAN GUCCI (Gaya Digital Globe: Putih, Lebar, Serif) */
+        /* LOGO GUCCI ATAS */
         .logo-text {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(55px, 12vw, 115px);
+            font-size: clamp(50px, 10vw, 100px);
             font-weight: 600;
-            letter-spacing: 25px; /* Jarak huruf lebar agar sangat elegan */
-            margin-bottom: 50px;
+            letter-spacing: 25px;
+            margin-bottom: 40px;
             text-transform: uppercase;
-            color: #ffffff;
-            /* Memberikan sedikit efek cahaya agar tulisan "hidup" */
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px rgba(255,255,255,0.1);
-            margin-left: 25px; /* Menyeimbangkan spasi huruf terakhir agar tetap di tengah */
+            margin-left: 25px;
         }
 
         .time-box-container {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-bottom: 60px;
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        /* Kotak Transparan Halus */
         .time-box {
             background: rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            padding: 30px 50px;
-            border-radius: 4px;
-            min-width: 180px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            padding: 30px 40px;
+            border-radius: 2px;
+            min-width: 170px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .label {
             display: block;
-            font-weight: 900;
-            font-size: 14px;
+            font-weight: 700;
+            font-size: 13px;
             letter-spacing: 4px;
             margin-bottom: 20px;
             color: rgba(255, 255, 255, 0.7);
@@ -88,85 +77,139 @@
 
         .time-value {
             font-family: 'Playfair Display', serif;
-            font-size: 48px;
+            font-size: 45px;
             font-weight: 700;
-            display: block;
-            letter-spacing: 1px;
         }
 
-        /* Teks Deskripsi */
-        .footer-text {
-            font-size: 13px;
+        .footer-desc {
+            font-size: 12px;
             font-weight: 700;
-            line-height: 2;
+            line-height: 1.8;
             letter-spacing: 2px;
             text-transform: uppercase;
-            max-width: 600px;
-            margin: 0 auto;
-            color: rgba(255, 255, 255, 0.6);
+            max-width: 550px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .divider {
-            width: 40px;
-            height: 1px;
+            width: 30px; height: 1px;
             background: rgba(255, 255, 255, 0.2);
-            margin: 30px auto;
+            margin: 0 auto 40px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* --- STYLING FOOTER BARU --- */
+        footer {
+            width: 100%;
+            padding: 40px 0;
+            background: rgba(0, 0, 0, 0.1); /* Sedikit lebih gelap dari bg */
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Responsif HP */
+        .footer-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Simbol Double G */
+        .double-g {
+            width: 40px;
+            height: auto;
+            fill: white;
+            opacity: 0.9;
+        }
+
+        .sub-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .sub-brand span {
+            display: block;
+            font-size: 8px;
+            letter-spacing: 1px;
+            margin-top: -3px;
+        }
+
+        .copyright-text {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            padding: 0 20px;
+        }
+
         @media (max-width: 600px) {
-            .logo-text { font-size: 45px; letter-spacing: 12px; margin-left: 12px; }
-            .time-box-container { flex-direction: column; align-items: center; gap: 20px; }
-            .time-box { width: 85%; padding: 25px; }
-            .time-value { font-size: 40px; }
-            .footer-text { font-size: 11px; }
+            .time-box-container { flex-direction: column; align-items: center; }
+            .time-box { width: 80%; }
+            .footer-logos { gap: 15px; }
+            .sub-brand { font-size: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-wrapper">
-        <!-- Tulisan GUCCI Serif Putih Lebar -->
-        <h1 class="logo-text">GUCCI</h1>
+    <!-- Konten Utama -->
+    <div class="content-area">
+        <div class="main-wrapper">
+            <h1 class="logo-text">GUCCI</h1>
 
-        <div class="time-box-container">
-            <div class="time-box">
-                <span class="label">Mulai</span>
-                <span class="time-value" id="startTime">--:--</span>
+            <div class="time-box-container">
+                <div class="time-box">
+                    <span class="label">MULAI</span>
+                    <span class="time-value" id="startTime">--:--</span>
+                </div>
+                <div class="time-box">
+                    <span class="label">SELESAI</span>
+                    <span class="time-value" id="endTime">--:--</span>
+                </div>
             </div>
-            <div class="time-box">
-                <span class="label">Selesai</span>
-                <span class="time-value" id="endTime">--:--</span>
-            </div>
+
+            <div class="divider"></div>
+
+            <p class="footer-desc">
+                SISTEM SEDANG MEMPROSES PROFIT DI DALAM AKUN ANDA<br>
+                MOHON MENUNGGU HINGGA WAKTU YANG<br>
+                DITENTUKAN SISTEM BERAKHIR
+            </p>
         </div>
-
-        <div class="divider"></div>
-
-        <p class="footer-text">
-            Sistem sedang memproses profit di dalam akun anda<br>
-            mohon menunggu hingga waktu yang<br>
-            ditentukan sistem berakhir
-        </p>
     </div>
+
+    <!-- Bagian Footer (Sesuai Gambar Anda) -->
+    <footer>
+        <div class="footer-logos">
+            <!-- Icon Double G -->
+            <svg class="double-g" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M256 160c-48.4 0-88.7 32.3-101.3 76.2 11.2-12.4 27.2-20.2 45.1-20.2 33.3 0 60.3 27 60.3 60.3s-27 60.3-60.3 60.3c-17.9 0-33.9-7.8-45.1-20.2 12.6 43.9 52.9 76.2 101.3 76.2 58.2 0 105.3-47.1 105.3-105.3S314.2 160 256 160zm-110.3 116.3c0-24.8 20.2-45 45-45s45 20.2 45 45-20.2 45-45 45-45-20.2-45-45z M366.3 276.3c0 58.2-47.1 105.3-105.3 105.3-48.4 0-88.7-32.3-101.3-76.2 11.2 12.4 27.2 20.2 45.1 20.2 33.3 0 60.3-27 60.3-60.3s-27-60.3-60.3-60.3c-17.9 0-33.9 7.8-45.1 20.2 12.6-43.9 52.9-76.2 101.3-76.2 58.2 0 105.3 47.1 105.3 105.3z M211 276.3c0-24.8 20.2-45 45-45s45 20.2 45 45-20.2 45-45 45-45-20.2-45-45z" transform="scale(0.8) translate(60, 60)"/>
+            </svg>
+
+            <div class="sub-brand">GUCCI OSTERIA <span>da Massimo Bottura</span></div>
+            <div class="sub-brand">PALAZZO</div>
+            <div class="sub-brand">GUCCI</div>
+        </div>
+        
+        <div class="copyright-text">
+            © 2016 - 2026 GUCCIO GUCCI S.P.A. - ALL RIGHT RESERVERD. SIAE LICENCE# 2294/1/1936
+        </div>
+    </footer>
 
     <script>
         function updateClock() {
             const now = new Date();
             const pad = (num) => num.toString().padStart(2, '0');
-            
-            // Jam Dunia Real-time
             document.getElementById('startTime').innerText = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
-            
-            // Waktu Selesai (Otomatis +5 Menit)
             const future = new Date(now.getTime() + 5 * 60000);
             document.getElementById('endTime').innerText = `${pad(future.getHours())}:${pad(future.getMinutes())}`;
         }
-        
         setInterval(updateClock, 1000);
         updateClock();
     </script>
